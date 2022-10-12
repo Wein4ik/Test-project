@@ -5,7 +5,6 @@ from .models import *
 menu = [{'title': "О сайте", 'url_name': 'about'},
         {'title': "Добавить статью", 'url_name': 'add_page'},
         {'title': "Обратная связь", 'url_name': 'contact'},
-        {'title': "Войти", 'url_name': 'login'}
         ]
 
 
@@ -17,8 +16,8 @@ class DataMixin:
         cats = Category.objects.annotate(Count('women'))
 
         copy_menu = menu.copy()
-        if not self.request.user.is_authenticated:
-            del copy_menu[1]
+        # if not self.request.user.is_authenticated:
+        #     copy_menu.remove()
 
         context['menu'] = copy_menu
         context['cats'] = cats
